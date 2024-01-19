@@ -1,0 +1,37 @@
+@model Turbo.az.Models.Vehicle;
+@{
+    ViewData["Title"] = "Create new Vehicle";
+    string? brandName = string.Empty;
+    var modelName = string.Empty;
+    double? price = default;
+    int? engineVolume = default;
+    string? imageUrl = string.Empty;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a asp-controller="Vehicle" asp-action="Index">Home</a>
+
+<form method="post" asp-controller="Vehicle" asp-action="Create">
+  <div class="mb-3">
+    <label asp-for="@brandName" class="form-label">Brand: </label>
+    <input type="text" asp-for="@brandName" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@modelName" class="form-label">Model: </label>
+    <input type="text" asp-for="@modelName" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@price" class="form-label">Price($): </label>
+    <input type="number" asp-for="@price" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@engineVolume" class="form-label">Engine Volume(sm<sup>3</sup>): </label>
+    <input type="number" asp-for="@engineVolume" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@imageUrl" class="form-label">Image Url: </label>
+    <input type="text" asp-for="@imageUrl" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success">Create new vehicle</button>
+</form>

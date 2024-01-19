@@ -1,0 +1,67 @@
+@model IEnumerable<Vehicle>
+
+@{
+    ViewData["Title"] = "All Vehicles";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a asp-controller="Vehicle" asp-action="Create">Create new</a>
+
+<style>
+
+    .vehicles-container {
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .vehicle-info {
+        background-color: rgb(19, 24, 36);
+        padding: 10px;
+        border-radius: 20px;
+        margin: 10px;
+        position: relative;
+        left: 0;
+        border-radius: 8px;
+        transition: 1000ms all;
+        transform-origin:
+            center left;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+    }
+
+    .vehicle-info:hover {
+        cursor: pointer;
+        transform: scale(1);
+        box-shadow: 0 0 20px #03e9f4;
+        margin: 5px;
+    }
+
+    .vehicle-info:hover~.vehicle-info {
+        font-weight: bold;
+        cursor: pointer;
+        transform: translateX(22px);
+    }
+
+    img {
+        border-radius: 10px;
+        width: 265px;
+        height: 190px;
+        margin-bottom: 10px;
+    }
+
+</style>
+
+<div class="vehicles-container">
+    @foreach (var vehicle in Model)
+    {
+        <div class="vehicle-info">
+            <img src="@vehicle.ImageUrl" alt="image of car" />
+            <p><b><i>@vehicle.BrandName @vehicle.ModelName</i></b></p>
+            <p><i>@vehicle.Price$, @vehicle.EngineVolume sm<sup>3</sup></i></p>
+        </div>
+    }
+</div>
